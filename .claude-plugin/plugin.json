@@ -1,0 +1,7 @@
+{
+  "name": "mvp-fullstack-skills",
+  "version": "0.1.0",
+  "description": "Bộ skill đưa hệ thống từ ý tưởng đến MVP: Product, UX/UI, System Design, DDD Architecture, API, Database, Backend .NET, Frontend, Security, Testing, DevOps, Observability, Data Engineering, Launch.",
+  "author": { "name": "kaivnit" },
+  "license": "MIT"
+}
