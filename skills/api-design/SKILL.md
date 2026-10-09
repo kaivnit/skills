@@ -69,3 +69,17 @@ paths:
 
 ## Anti-patterns
 Verb trong URL kiểu `/getOrders`; luôn trả `200` kèm `success:false`; lộ entity/ID tự tăng nhạy cảm; đổi contract không đổi version; GraphQL không giới hạn query depth.
+
+## Đa ngôn ngữ
+
+Contract-first áp dụng cho mọi ngôn ngữ; khác nhau ở cách sinh code:
+
+| Ngôn ngữ | OpenAPI → code | gRPC |
+|---|---|---|
+| C# | NSwag, Kiota; Minimal API xuất OpenAPI | Grpc.AspNetCore |
+| TypeScript/JS | openapi-typescript, orval; Fastify/Zod → OpenAPI | `@connectrpc/connect`, `@grpc/grpc-js` |
+| Go | oapi-codegen, ogen | grpc-go, connect-go |
+| Rust | utoipa (code-first), progenitor (client) | tonic |
+| Python | FastAPI sinh OpenAPI; openapi-python-client | grpcio |
+
+Quy tắc chung: lint Spectral trong CI, test chống phá vỡ contract (oasdiff), lỗi theo ProblemDetails ở mọi ngôn ngữ.

@@ -69,3 +69,15 @@ erDiagram
 
 ## Anti-patterns
 Lưu tiền bằng `float`; EAV tuỳ tiện; N+1 do lazy loading; thiếu index FK; business logic trong stored procedure rải rác; chia sẻ bảng giữa các module.
+
+## Đa ngôn ngữ
+
+| Ngôn ngữ | Truy cập dữ liệu | Migration |
+|---|---|---|
+| C# | EF Core (ghi), Dapper (đọc) | EF Migrations, DbUp |
+| TypeScript/JS | Drizzle, Kysely, Prisma | drizzle-kit, Prisma Migrate, Knex |
+| Go | pgx + sqlc, GORM, ent | goose, atlas, golang-migrate |
+| Rust | SQLx (kiểm query lúc compile), SeaORM, Diesel | `sqlx migrate`, refinery |
+| Python | SQLAlchemy 2 | Alembic |
+
+Nguyên tắc không đổi: aggregate → bảng, index theo truy vấn thật, expand → migrate → contract, migration chạy bằng job riêng, thử restore backup.

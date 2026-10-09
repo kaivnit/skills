@@ -57,3 +57,15 @@ app.MapHealthChecks("/health/ready", new() { Predicate = c => c.Tags.Contains("r
 
 ## Anti-patterns
 `Console.WriteLine` làm log; log mọi thứ ở Information; alert ồn gây mù cảm giác (alert fatigue); không có correlation id; chỉ monitor CPU mà không có metric nghiệp vụ.
+
+## Đa ngôn ngữ
+
+| Ngôn ngữ | Log có cấu trúc | Tracing/metrics |
+|---|---|---|
+| C# | Serilog | OpenTelemetry .NET |
+| TypeScript/JS | pino | `@opentelemetry/sdk-node` (khởi tạo trước khi import app) |
+| Go | `log/slog` (zap, zerolog) | otel-go (`otelhttp`, `otelpgx`) |
+| Rust | `tracing` + subscriber JSON | `tracing-opentelemetry` |
+| Python | structlog | opentelemetry-python (`opentelemetry-instrument`) |
+
+Chuẩn chung xuyên ngôn ngữ: log JSON có `traceId`/`correlationId`, truyền `traceparent` qua HTTP/message, `/health/live|ready`, che PII.

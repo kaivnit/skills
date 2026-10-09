@@ -109,3 +109,17 @@ Status: Accepted | Context | Decision | Consequences | Alternatives considered
 
 ## Anti-patterns
 Anemic domain model (entity chỉ có getter/setter); "microservices" chia theo bảng CRUD; DDD đầy đủ cho phần CRUD đơn giản (dùng transaction script cho Supporting/Generic); module truy cập thẳng bảng của module khác.
+
+## Đa ngôn ngữ
+
+Nguyên tắc DDD/Clean không đổi theo ngôn ngữ; code C# ở trên chỉ minh hoạ. Idiom Aggregate/Value Object cho từng ngôn ngữ: `lang-*` mục 5.
+
+| Cưỡng chế quy tắc phụ thuộc | Công cụ |
+|---|---|
+| C# | NetArchTest |
+| TypeScript / JavaScript | dependency-cruiser, eslint-plugin-boundaries |
+| Go | `internal/` + depguard / go-arch-lint |
+| Rust | Cargo workspace (mỗi crate = một tầng; trình biên dịch cưỡng chế) |
+| Python | import-linter |
+
+Go/Rust/Python không cần MediatR hay DI container: handler là hàm/struct, nối dây ở composition root.

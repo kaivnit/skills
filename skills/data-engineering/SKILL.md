@@ -50,3 +50,7 @@ group by 1,2,3
 
 ## Anti-patterns
 Truy vấn analytics nặng trên DB primary; mỗi dashboard một định nghĩa metric khác nhau; không version schema event; xây stream platform khi batch hằng giờ là đủ.
+
+## Đa ngôn ngữ
+
+Python là mặc định cho data (polars, DuckDB, dbt, Dagster/Airflow, thư viện ML). Service ingest/streaming hiệu năng cao có thể viết bằng Go hoặc Rust; dịch vụ nghiệp vụ giữ nguyên ngôn ngữ của hệ thống. Ranh giới giữa các phần là schema event có version (`lang-python` mục 4, `stack-selector` mục 2).

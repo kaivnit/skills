@@ -71,3 +71,15 @@ public class PlaceOrderApiTests(ApiFactory factory) : IClassFixture<ApiFactory>
 
 ## Anti-patterns
 Mock mọi thứ khiến test chỉ kiểm mock; test phụ thuộc thứ tự/dữ liệu chung; E2E quá nhiều và chậm; theo đuổi 100% coverage; `[Skip]` để pass CI.
+
+## Đa ngôn ngữ
+
+| Ngôn ngữ | Unit | Integration (container thật) | Property | Kiểm kiến trúc |
+|---|---|---|---|---|
+| C# | xUnit | Testcontainers .NET | FsCheck | NetArchTest |
+| TypeScript/JS | Vitest, `node:test` | testcontainers-node | fast-check | dependency-cruiser |
+| Go | `testing` + testify | testcontainers-go | `testing/quick`, rapid, fuzz | go-arch-lint |
+| Rust | `#[test]` + nextest | testcontainers-rs | proptest | Cargo workspace |
+| Python | pytest | testcontainers-python | Hypothesis | import-linter |
+
+Pyramid, "DB thật thay vì in-memory", domain test không mock, E2E ít mà chắc: áp dụng giống nhau.

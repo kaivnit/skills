@@ -79,3 +79,15 @@ Ghi vào `docs/tech-debt.md`: *mô tả · lý do vay · chi phí lãi (chậm b
 
 ## Anti-patterns
 Refactor lớn không test; over-engineering (abstraction cho một implementation duy nhất, "cho tương lai"); generic repository bọc DbContext; comment giải thích code rối thay vì sửa code; dùng pattern để khoe; "rewrite from scratch" khi có thể refactor từng bước.
+
+## Đa ngôn ngữ
+
+| Ngôn ngữ | Format / lint | Kiểm kiểu | Smell đặc thù |
+|---|---|---|---|
+| C# | `dotnet format`, Roslyn analyzers | nullable reference types | Generic Repository bọc DbContext |
+| TypeScript/JS | Biome hoặc ESLint + Prettier | `tsc --strict` (JS: checkJs) | `any` lan tràn, Promise không await |
+| Go | gofmt, golangci-lint | compiler | Interface to đặt cạnh implementation, `utils` package |
+| Rust | rustfmt, clippy `-D warnings` | compiler | `clone()`/`Rc<RefCell>` để né borrow checker, `unwrap()` |
+| Python | ruff | mypy --strict / pyright | `Any`, mutable default, bắt `Exception` rộng |
+
+SOLID, DRY, KISS, YAGNI áp dụng ở mọi ngôn ngữ nhưng thể hiện khác nhau (Go: interface nhỏ ở nơi dùng; Rust: trait + kiểu làm trạng thái sai không biểu diễn được).

@@ -8,6 +8,7 @@ description: Điều phối toàn bộ vòng đời xây hệ thống từ ý t�
 Skill "nhạc trưởng": không tự thiết kế chi tiết, mà **chọn đúng skill chuyên môn cho đúng phase** và giữ các artifact nhất quán trong `docs/`.
 
 ## Nguyên tắc cốt lõi
+- **Nguyên tắc độc lập ngôn ngữ, công cụ phụ thuộc ngôn ngữ**: ví dụ mặc định viết bằng C#; khi dự án dùng ngôn ngữ khác, giữ nguyên nguyên tắc và đổi công cụ theo `stack-selector` + `lang-*`.
 - **Thin slice trước, rộng sau**: một luồng nghiệp vụ end-to-end chạy được (UI → API → DB → deploy) quan trọng hơn nhiều module dở dang.
 - **KISS / YAGNI**: mặc định *Modular Monolith* + 1 database; chỉ tách microservice khi có bằng chứng (xem `architecture-ddd`).
 - **Mọi quyết định lớn ghi thành ADR** (`docs/adr/NNNN-*.md`).
@@ -39,6 +40,7 @@ flowchart LR
 | 1b | `ui-design-system` | `docs/02-design-tokens.md`, component list | Token + ≤ 15 component cơ bản được thống nhất |
 | 2a | `system-design` | `docs/03-system-design.md` | NFR có số liệu, capacity ước lượng, diagram C4 mức 1–2 |
 | 2b | `architecture-ddd` | `docs/04-architecture.md`, ADR | Bounded context + cấu trúc solution được chốt |
+| 2c | `stack-selector` + `lang-*` | `docs/adr/NNNN-stack.md` | Mỗi thành phần có ngôn ngữ + lý do; ≤ 2 ngôn ngữ backend; ranh giới là contract |
 | 3 | `api-design` | `docs/api/openapi.yaml` | Contract duyệt bởi FE + BE |
 | 4 | `database-design` | `docs/05-data-model.md`, migration | ERD + index cho query chính |
 | 5 | `backend-dotnet` | Code `src/`, API chạy được | Use-case chính qua integration test |
@@ -54,6 +56,7 @@ flowchart LR
 
 | Khi nào | Skill |
 |---|---|
+| Làm việc bằng một ngôn ngữ cụ thể | `lang-csharp` · `lang-typescript` · `lang-javascript` · `lang-go` · `lang-rust` · `lang-python` (khác → `language-profile-template`) |
 | Bắt đầu code, cần khung chạy được | `project-bootstrap` (ngay sau phase 2b) |
 | Lập kế hoạch giao hàng, ước lượng, chia sprint | `project-planning` (sau phase 0) |
 | Giao tiếp bất đồng bộ, tích hợp bên thứ ba | `messaging-integration` (cùng phase 5) |

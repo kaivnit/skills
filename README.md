@@ -1,6 +1,6 @@
 # MVP Fullstack Skills
 
-Bộ **Agent Skills** cho Claude Code giúp một software developer đi từ **ý tưởng → MVP production** theo quy trình có cổng chất lượng (gate) ở mỗi phase. Stack mặc định: **.NET 8/9 + ASP.NET Core, DDD, Clean Architecture, Modular Monolith**, frontend React/Next.js (hoặc Blazor), PostgreSQL, Docker.
+Bộ **Agent Skills** cho Claude Code giúp một software developer đi từ **ý tưởng → MVP production** theo quy trình có cổng chất lượng (gate) ở mỗi phase. Nguyên tắc (DDD, Clean Architecture, Modular Monolith, contract-first, test, DevOps, observability) **độc lập ngôn ngữ**; ví dụ mặc định viết bằng C#/.NET. Profile ngôn ngữ cho **C#, TypeScript, JavaScript, Go, Rust, Python** (và template để thêm Java, Kotlin, PHP…) giúp áp dụng cùng nguyên tắc bằng idiom và công cụ bản địa.
 
 ## Danh sách skill
 
@@ -37,6 +37,14 @@ Bộ **Agent Skills** cho Claude Code giúp một software developer đi từ **
 | — | [`ai-llm-integration`](skills/ai-llm-integration) | LLM, RAG, tool use, evals, guardrails |
 | — | [`mobile-app`](skills/mobile-app) | PWA/React Native/MAUI, offline-first, phát hành store |
 | — | [`compliance-privacy`](skills/compliance-privacy) | GDPR, Nghị định 13, quyền chủ thể, PCI, SOC 2 |
+| — | [`stack-selector`](skills/stack-selector) | Chọn ngôn ngữ theo bài toán, quy tắc polyglot, bảng tương đương công cụ |
+| — | [`lang-csharp`](skills/lang-csharp) | Profile C#/.NET |
+| — | [`lang-typescript`](skills/lang-typescript) | Profile TypeScript (Node/Bun/Deno, full-stack) |
+| — | [`lang-javascript`](skills/lang-javascript) | Profile JavaScript thuần (ESM, JSDoc + checkJs) |
+| — | [`lang-go`](skills/lang-go) | Profile Go (hexagonal, goroutine/context, sqlc) |
+| — | [`lang-rust`](skills/lang-rust) | Profile Rust (Cargo workspace theo tầng, Axum, SQLx) |
+| — | [`lang-python`](skills/lang-python) | Profile Python (FastAPI, Pydantic, SQLAlchemy, uv/ruff/mypy) |
+| — | [`language-profile-template`](skills/language-profile-template) | Khung 13 mục để thêm ngôn ngữ mới |
 
 Skill 0–15 là đường chính từ ý tưởng đến MVP; các dòng `—` là skill bổ trợ, `mvp-orchestrator` chỉ khi nào gọi.
 
@@ -57,6 +65,14 @@ flowchart LR
 ```
 
 Mỗi skill ghi artifact vào `docs/` của dự án đích (`00-product-brief.md` … `11-launch-checklist.md`) để các phase sau tái sử dụng.
+
+## Làm việc đa ngôn ngữ
+
+1. `stack-selector`: chọn ngôn ngữ cho từng thành phần (API, worker, data, CLI, frontend); tối đa 2 ngôn ngữ backend cho MVP, ranh giới là contract (OpenAPI/proto).
+2. Mở profile `lang-*` tương ứng: toolchain, layout Clean/DDD, thư viện, idiom Aggregate/Value Object, lỗi, đồng thời, test, Docker, CI, profiling.
+3. Các skill nguyên tắc (`architecture-ddd`, `api-design`, `database-design`, `testing-qa`, `devops-cicd`, `observability`…) có mục **Đa ngôn ngữ** chỉ ra công cụ tương đương.
+
+Ví dụ trong các profile được thử biên dịch/chạy (Go, Rust, TypeScript strict, JavaScript, Python); ví dụ C# chưa được biên dịch trong môi trường tạo skill.
 
 ## Cài đặt
 

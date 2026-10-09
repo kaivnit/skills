@@ -84,3 +84,15 @@ Giai đoạn: **lint/build → test → scan (SAST, dep, secret, image) → buil
 
 ## Anti-patterns
 Deploy thủ công bằng SSH; dùng tag `latest`; secret trong repo/image; migration tự chạy khi app start ở nhiều replica; Kubernetes cho 1 service; staging khác prod hoàn toàn.
+
+## Đa ngôn ngữ
+
+| Ngôn ngữ | Base image runtime | Lệnh CI chính |
+|---|---|---|
+| C# | `aspnet:*-jammy-chiseled` | `dotnet build --warnaserror` · `dotnet test` · `dotnet list package --vulnerable` |
+| TypeScript/JS | `node:*-slim` / distroless | `pnpm lint` · `tsc --noEmit` · `pnpm test` · `pnpm audit` |
+| Go | `distroless/static` | `golangci-lint run` · `go test -race ./...` · `govulncheck ./...` |
+| Rust | `distroless/cc` / `scratch` (musl) | `cargo clippy -D warnings` · `cargo nextest run` · `cargo deny check` |
+| Python | `python:*-slim` | `ruff check` · `mypy --strict` · `pytest` · `pip-audit` |
+
+Dockerfile đa tầng, non-root, pin phiên bản, path-filter trong CI cho monorepo đa ngôn ngữ; Dockerfile đầy đủ ở mục 10 của từng `lang-*`.

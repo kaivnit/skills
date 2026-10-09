@@ -69,3 +69,15 @@ Core Web Vitals: LCP < 2.5s, INP < 200ms, CLS < 0.1. Code splitting, tối ưu �
 
 ## Anti-patterns
 Tối ưu theo cảm giác; cache để che query tồi; thêm máy thay vì sửa query; benchmark trên laptop rồi suy ra production; đo trung bình thay vì p95/p99; micro-optimize code ngoài đường nóng.
+
+## Đa ngôn ngữ
+
+| Ngôn ngữ | Profiling / benchmark |
+|---|---|
+| C# | dotnet-counters, dotnet-trace, PerfView, BenchmarkDotNet |
+| TypeScript/JS | `node --cpu-prof`, clinic.js, 0x; theo dõi event-loop lag |
+| Go | pprof (CPU/heap/goroutine/mutex), `go test -bench -benchmem`, benchstat |
+| Rust | criterion, cargo-flamegraph, perf, tokio-console |
+| Python | py-spy, scalene, memray, cProfile; vector hoá (numpy/polars) |
+
+Nút thắt thường là DB và I/O ở mọi ngôn ngữ — đo bằng trace trước khi đổi ngôn ngữ.

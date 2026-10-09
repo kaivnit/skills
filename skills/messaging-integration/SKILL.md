@@ -78,3 +78,15 @@ Chỉ dùng khi nghiệp vụ trải qua nhiều service/module có DB riêng. O
 
 ## Anti-patterns
 Dual-write (ghi DB rồi publish riêng, không Outbox); consumer không idempotent; event mang quá nhiều dữ liệu hoặc là "CRUD event"; gọi HTTP đồng bộ chuỗi dài giữa service; dùng Kafka/Saga khi monolith đủ; chia sẻ DB giữa service thay vì event.
+
+## Đa ngôn ngữ
+
+| Ngôn ngữ | Client/Framework | Ghi chú Outbox/idempotency |
+|---|---|---|
+| C# | MassTransit (EF Outbox), Wolverine | Outbox có sẵn trong thư viện |
+| TypeScript/JS | BullMQ, amqplib, NATS | Tự cài Outbox (bảng + poller) |
+| Go | amqp091-go, watermill (có SQL outbox), nats.go | Dùng `watermill-sql` hoặc tự cài |
+| Rust | lapin, async-nats | Tự cài Outbox bằng SQLx + task Tokio |
+| Python | Celery, Dramatiq, aio-pika | Tự cài Outbox; consumer phải idempotent |
+
+At-least-once + consumer idempotent + DLQ là bất biến ở mọi ngôn ngữ; schema event định nghĩa bằng JSON Schema/AsyncAPI/Protobuf để các ngôn ngữ cùng dùng.

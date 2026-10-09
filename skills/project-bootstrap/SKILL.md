@@ -72,3 +72,16 @@ Mỗi module: `Domain` (aggregate + test) → `Application` (1 command + validat
 
 ## Anti-patterns
 Copy cấu trúc từ template tải về mà không hiểu; tạo sẵn 10 module rỗng; bỏ qua analyzers "để sau"; migration chạy tự động lúc app start; không có lệnh thống nhất để chạy dự án.
+
+## Đa ngôn ngữ
+
+Phần lệnh ở trên viết cho .NET. Với ngôn ngữ khác, **giữ nguyên cấu trúc repo** (`docs/`, `src`/`apps`, `deploy/`, `Makefile`, CI, compose, ADR) và đổi bước khởi tạo:
+
+| Ngôn ngữ | Khởi tạo |
+|---|---|
+| TypeScript/JS | `pnpm init` + `pnpm-workspace.yaml`, `tsconfig.base.json` strict, Biome/ESLint, Vitest |
+| Go | `go mod init`, `cmd/<app>` + `internal/<module>/{domain,app,adapters}`, golangci-lint, `Makefile` |
+| Rust | `cargo new` workspace, crate theo tầng (`*-domain`, `*-app`, `*-infra`, `api`), `rust-toolchain.toml`, `deny.toml` |
+| Python | `uv init`, `src/<pkg>/<module>/{domain,application,infrastructure,api}`, ruff + mypy + import-linter, `pytest` |
+
+Chi tiết từng ngôn ngữ ở mục 2–3 và 11 của `lang-*`. Gate giữ nguyên: clone sạch → `make up` → health xanh → CI xanh.

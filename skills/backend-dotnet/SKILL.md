@@ -81,3 +81,7 @@ public sealed class PlaceOrderValidator : AbstractValidator<PlaceOrderCommand>
 
 ## Anti-patterns
 Controller/handler "béo" chứa luật nghiệp vụ; trả entity ra API; `Repository` generic bọc `DbContext` vô nghĩa; gọi HTTP/DB trong domain; `async void`; quên `CancellationToken`; publish event trước khi commit.
+
+## Đa ngôn ngữ
+
+Skill này là chiều sâu cho **C#/.NET**. Với ngôn ngữ khác, giữ nguyên các nguyên tắc (CQRS tách đọc/ghi, Result thay exception cho lỗi nghiệp vụ, Outbox + consumer idempotent, validation ở biên, pipeline cross-cutting) và dùng `lang-typescript`, `lang-go`, `lang-rust`, `lang-python`, `lang-javascript` cùng bảng tương đương trong `stack-selector`.
