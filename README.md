@@ -58,6 +58,14 @@ cp -r skills/* ~/.claude/skills/
 - Bắt đầu: *"Dùng mvp-orchestrator, tôi muốn làm hệ thống <mô tả> từ 0 đến MVP."*
 - Hoặc gọi trực tiếp từng skill: *"Dùng architecture-ddd để Event Storming module Ordering."*
 
+## Quy ước commit
+
+Repo dùng [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/) (xem skill [`conventional-commit`](skills/conventional-commit)). Mỗi pull request được kiểm bằng commitlint (`commitlint.config.mjs`, `.github/workflows/commitlint.yml`). Kiểm cục bộ:
+
+```bash
+npx --yes -p @commitlint/cli -p @commitlint/config-conventional commitlint --from origin/main --config commitlint.config.mjs
+```
+
 ## Triết lý
 KISS · YAGNI · DRY · SOLID — **Modular Monolith trước, Microservices khi có bằng chứng**; thin vertical slice; quyết định ghi ADR; test + observability là một phần của MVP, không phải "để sau".
 
