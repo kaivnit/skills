@@ -22,6 +22,7 @@ Bộ **Agent Skills** cho Claude Code giúp một software developer đi từ **
 | 13 | [`observability`](skills/observability) | Serilog + Seq/ELK, OpenTelemetry, SLO, alert |
 | 14 | [`data-engineering`](skills/data-engineering) | Tracking plan, ELT, dbt, data quality, dashboard |
 | 15 | [`mvp-launch-readiness`](skills/mvp-launch-readiness) | Go/No-Go, rollout, post-launch |
+| — | [`conventional-commit`](skills/conventional-commit) | Commit/PR title theo Conventional Commits 1.0.0, SemVer, commitlint |
 
 ## Luồng làm việc
 
