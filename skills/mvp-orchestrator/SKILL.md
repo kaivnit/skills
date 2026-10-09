@@ -50,6 +50,25 @@ flowchart LR
 | 9 | `data-engineering` | `docs/10-data-plan.md`, pipeline | Số liệu success metric xem được |
 | 10 | `mvp-launch-readiness` | `docs/11-launch-checklist.md` | Go/No-Go ký duyệt |
 
+## Skill bổ trợ (gọi theo ngữ cảnh)
+
+| Khi nào | Skill |
+|---|---|
+| Bắt đầu code, cần khung chạy được | `project-bootstrap` (ngay sau phase 2b) |
+| Lập kế hoạch giao hàng, ước lượng, chia sprint | `project-planning` (sau phase 0) |
+| Giao tiếp bất đồng bộ, tích hợp bên thứ ba | `messaging-integration` (cùng phase 5) |
+| Quy trình nhánh, PR, release, changelog | `git-workflow-release` + `conventional-commit` (xuyên suốt) |
+| Chậm, tốn tài nguyên, cần load test | `performance-engineering` (phase 7+) |
+| Chất lượng code, refactor, nợ kỹ thuật | `code-quality-refactoring` (xuyên suốt) |
+| Làm SaaS đa khách hàng, tính tiền theo gói | `saas-foundations` (phase 2b–5) |
+| Bàn giao, onboard, runbook | `technical-documentation` (xuyên suốt) |
+| Sự cố production, on-call | `incident-response` (từ phase 8) |
+| Hạ tầng cloud, chi phí | `cloud-infrastructure-finops` (phase 8) |
+| Có dữ liệu cá nhân, bán cho doanh nghiệp | `compliance-privacy` (trước phase 7a) |
+| Có app iOS/Android | `mobile-app` (song song phase 6) |
+| Có tính năng LLM/RAG/agent | `ai-llm-integration` (phase 5–6) |
+| Thay thế/nâng cấp hệ thống cũ | `legacy-migration` (thay phase 2b khi không phải greenfield) |
+
 ## Cách điều phối
 1. **Xác định điểm xuất phát**: hỏi/đọc repo để biết đã có artifact nào trong `docs/`. Bắt đầu từ phase đầu tiên còn thiếu.
 2. **Chạy song song khi độc lập**: UX/UI song song System Design; FE và BE song song sau khi có OpenAPI.

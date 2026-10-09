@@ -23,6 +23,22 @@ Bộ **Agent Skills** cho Claude Code giúp một software developer đi từ **
 | 14 | [`data-engineering`](skills/data-engineering) | Tracking plan, ELT, dbt, data quality, dashboard |
 | 15 | [`mvp-launch-readiness`](skills/mvp-launch-readiness) | Go/No-Go, rollout, post-launch |
 | — | [`conventional-commit`](skills/conventional-commit) | Commit/PR title theo Conventional Commits 1.0.0, SemVer, commitlint |
+| — | [`project-bootstrap`](skills/project-bootstrap) | Khung solution .NET Modular Monolith chạy được ngày đầu |
+| — | [`messaging-integration`](skills/messaging-integration) | RabbitMQ/MassTransit, Outbox/Inbox, Saga, gRPC, webhook, ACL |
+| — | [`project-planning`](skills/project-planning) | Roadmap, sprint, ước lượng, rủi ro, Definition of Done |
+| — | [`git-workflow-release`](skills/git-workflow-release) | Branching, PR/review, SemVer, release-please, hotfix |
+| — | [`performance-engineering`](skills/performance-engineering) | Profiling .NET, EF/SQL, cache, k6, Web Vitals |
+| — | [`saas-foundations`](skills/saas-foundations) | Multi-tenancy, subscription/billing, quota, email giao dịch |
+| — | [`technical-documentation`](skills/technical-documentation) | Docs-as-code, ADR, C4, runbook, onboarding |
+| — | [`incident-response`](skills/incident-response) | SEV, on-call, giảm thiểu, post-mortem không đổ lỗi |
+| — | [`code-quality-refactoring`](skills/code-quality-refactoring) | Code smell, SOLID, refactor an toàn, analyzers, nợ kỹ thuật |
+| — | [`cloud-infrastructure-finops`](skills/cloud-infrastructure-finops) | Azure/AWS, IaC, IAM, FinOps |
+| — | [`legacy-migration`](skills/legacy-migration) | Strangler Fig, di chuyển dữ liệu, .NET Framework → .NET |
+| — | [`ai-llm-integration`](skills/ai-llm-integration) | LLM, RAG, tool use, evals, guardrails |
+| — | [`mobile-app`](skills/mobile-app) | PWA/React Native/MAUI, offline-first, phát hành store |
+| — | [`compliance-privacy`](skills/compliance-privacy) | GDPR, Nghị định 13, quyền chủ thể, PCI, SOC 2 |
+
+Skill 0–15 là đường chính từ ý tưởng đến MVP; các dòng `—` là skill bổ trợ, `mvp-orchestrator` chỉ khi nào gọi.
 
 ## Luồng làm việc
 
